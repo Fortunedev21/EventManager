@@ -1,0 +1,61 @@
+{# templates/event/event.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+    {% block stylesheets %}
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/owl.theme.css">
+    <link rel="stylesheet" href="css/owl.carousel.css">
+
+    <!-- Main css -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Poppins:400,500,600' rel='stylesheet' type='text/css'>
+{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="mt-5 pt-5">Liste des événements</h1>
+
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th>Nom de l'événement</th>
+                    <th>Date de l'événement</th>
+                    <th>Emplacement</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in events %}
+                    <tr>
+                        <td>{{ event.eventName }}</td>
+                        <td>{{ event.eventDate|date('Y-m-d H:i:s') }}</td>
+                        <td>{{ event.location }}</td>
+                        <td>
+                            <a href="{{ path('update_event', {'id': event.id}) }}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('remove_event', {'id': event.id}) }}" class="btn btn-danger">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <a href="{{ path('index') }}" class="btn btn-primary">Retour</a>
+        <a href="{{ path('create_event') }}" class="btn btn-warning">Créer un évènement</a>
+
+        {#{% include 'pagination.html.twig' with {'pagination': events.pagination} %}#}
+{% endblock %}
+
+{% block javascripts %}
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.parallax.js"></script>
+    <script src="js/owl.carousel.min.js"></script>
+    <script src="js/smoothscroll.js"></script>
+    <script src="js/wow.min.js"></script>
+    <script src="js/custom.js"></script>
+{% endblock %}

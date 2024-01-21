@@ -1,0 +1,36 @@
+{# templates/event/create.html.twig #}
+
+{% extends 'base.html.twig' %}
+
+{% block title %}
+Créer un évènement
+{% endblock %}
+
+{% block stylesheets %}
+
+{% endblock %}
+
+{% block body %}
+<h1>Créer un évènement</h1>
+ 
+{{ form_start(form) }}
+{{ form_label(form.event_id) }}
+{{ form_widget(form.event_id) }}
+{{ form_errors(form.event_id) }}
+{{ form_label(form.event_name) }}
+{{ form_widget(form.event_name) }}
+{{ form_errors(form.event_name) }}
+{{ form_label(form.event_date) }}
+{{ form_widget(form.event_date) }}
+{{ form_errors(form.event_date) }}
+{{ form_label(form.location) }}
+{{ form_widget(form.location) }}
+{{ form_errors(form.location) }}
+
+{{ form_row(form.submit)}}
+{{ form_end(form) }}
+{% endblock %}
+
+{% block javascripts %}
+
+{% endblock %}
